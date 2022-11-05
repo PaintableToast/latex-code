@@ -1,0 +1,182 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\begin{flushleft}
+    Namen: \\\textbf{Florian Will, Johanna Lotta Siemers,\\ Michael Alexander Warnecke und Ramon Cemil Kimyon} \hspace*{\fill}
+        07.11.2022 \\
+    Übung-01 \textbf{(Do 18-20)}\\
+    Veranstaltungsnummer: \textbf{504633} \\
+    Name des Tutors: \textbf{Dr. Paul Buterus}
+
+
+\end{flushleft}
+\begin{center}
+    \Large{\textbf{Diskrete Mathematik für Informatik Anfänger I}} \\
+    \large{Übungen zur Vorlesung WS 2022 / 2023} \\
+    \begin{flushleft}
+        \normalsize{Abgabe bis zum \textbf{7. November 2022}} \hspace*{\fill}Woche 1 
+    \end{flushleft}
+    \noindent\rule{\textwidth}{1pt}
+\end{center}
+
+%Aufgabe 1
+\subsubsection*{Aufgabe 1 \small(a)}
+\begin{align}
+    &\{(1, 2) \times (3, 4)\} \cup \{1, 2, 3\} \notag \\
+    &\Leftrightarrow \{(1, 3), (1, 4), (2, 3), (2, 4)\} \cup \{1, 2, 3\} \notag \\
+    &\Leftrightarrow \{(1, 3), (1, 4), (2, 3), (2, 4), 1, 2, 3\} \notag
+\end{align}
+Die Lösung der Aufgabe lautet $\{(1, 3), (1, 4), (2, 3), (2, 4), 1, 2, 3\}$ 
+
+%Aufgabe 1 b
+\subsubsection*{Aufgabe 1 \small(b)}
+\begin{align}
+    2^{\{1, 2, 3\}} &= \{\varnothing, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\} \notag \\
+    2^{\{1, 2\}} &= \{\varnothing, \{1\}, \{2\}, \{1, 2\}\} \notag \\
+    2^{\{1, 2, 3\}} \setminus 2^{\{1, 2\}} &= \{\varnothing, \{3\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\} \notag 
+\end{align}
+
+%Aufgabe 1 c
+\subsubsection*{Aufgabe 1\small(c)}
+\begin{align}
+    \bigcap_{i \in (2, 6)} \{\frac{i}{2}, i + 1\} = \{1, 2\} \cap \{3, 7\} = \{3\} \notag
+\end{align}
+
+%Aufgabe 1 d
+\subsubsection*{Aufgabe 1 \small(d)}
+\begin{align}
+    \bigcap_{n \in \mathbb{N}} \{n, n + 1, 2n\} \notag 
+    &\Leftrightarrow \bigcup_{n \in \mathbb{N}} \{n\} \cup \bigcup_{n \in \mathbb{N}} \{n + 1\} \cup \bigcup_{n \in \mathbb{N}} \{2 \cdot n \} \\
+    &\Leftrightarrow \mathbb{N} \cup \mathbb{N} \setminus \{1\} \cup \{x|\exists x \in \mathbb{N} : (\frac{x}{2} \in \mathbb{N})\} \notag \\
+    &\Rightarrow \{x|\exists x \in \mathbb{N} : (\frac{x}{2} \in \mathbb{N})\} \subset \mathbb{N} \setminus \{1\} \cup \mathbb{N} \notag
+\end{align}
+Daraus lässt sich folgern, dass diese Menge gleich $\mathbb{N}$ ist-
+
+%Aufgabe 2 a
+\subsubsection*{Aufgabe 2 \small(a)}
+\begin{align}
+    A \subset B \cap C \Leftrightarrow (A \subset B) \cap (A \subset C) \notag
+\end{align}
+\begin{align}
+    A \subset B \cap C &\Leftrightarrow \{x | \forall x \in A : x \in B \cap C \} && \textrm{(nach Def. von $\subset$)} \notag \\
+    &\Leftrightarrow \{x | \forall x \in A : x \in B \wedge x \in C \} && \textrm{(nach Def. von $\cap$)} \notag \\
+    &\Leftrightarrow \{x | \forall x \in A : x \in B \} \wedge \{x | \forall x \in A : x \in C \} && \textrm{(nach Def. von $\wedge$)} \notag \\
+    &\Leftrightarrow A \subset B \wedge A \subset C && \textrm{(nach Def. von $\subset$)} \notag \\
+    &\Leftrightarrow (A \subset B) \cap (A \subset C) && \textrm{(nach Def. von $\cap$)} & \Box \notag
+\end{align}
+
+%Aufgabe 2 b
+\subsubsection*{Aufgabe 2 \small(b)}
+\begin{align}
+    x \in A \setminus B \cup C &\Leftrightarrow x \in A \wedge x \notin B \cup C \notag && \textrm{(nach Def. von $\setminus$)}\\
+    &\Leftrightarrow x \in A \wedge x \in  (B \cup C)^C \notag  && \textrm{(nach Def. von einem Komplement)}\\
+    &\Leftrightarrow x \in A \wedge (x \in B^C \wedge x \in C^C) \notag  && \textrm{(1. Morgan'sche Regel)} \\
+    &\Leftrightarrow x \in A \wedge (x \notin B \wedge x \notin C) \notag  && \textrm{(nach Def. von einem Komplement)} \\
+    &\Leftrightarrow (x \in A \wedge x \notin B) \wedge (x \in A \wedge x \notin C) \notag  && \textrm{(weil $\wedge$ assoziativ ist)}\\
+    &\Leftrightarrow (x \in A \setminus B) \wedge (x \in A \setminus C) \notag  && \textrm{(nach Def. von $\setminus$)}\\
+    &\Leftrightarrow (x \in A \setminus B) \cap (x \in A \setminus C) \notag && \textrm{(nach Def. von $\cap$)} & \Box
+\end{align}
+
+\subsubsection*{Aufgabe 2 \small(c)}
+\begin{align}
+    \bigcap_{i \in I}\{D_i\} \cap B &\Leftrightarrow \bigcap_{i \in I}\{D_i \cap B\} \notag 
+\end{align}
+\begin{align}
+    \bigcap_{i \in I}\{D_i\} \cap B &\Leftrightarrow (D_1 \cap D_2 \cap D_3 \cap ... \cap D_i) \cap B \notag  && \textrm{(nach Def. von $\bigcap_{i \in I}\{D_i\}$)}\\
+    &\Leftrightarrow (D_1 \cap B) \cap (D_2 \cap B) \cap (D_3 \cap B) \cap ... \cap (D_i \cap B) \notag && \textrm{(weil $\cap$ assoziativ ist)} \\
+    &\Leftrightarrow  \bigcap_{i \in I}\{D_i\ \cap B\} && \textrm{(nach Def. von $\bigcap_{i \in I}\{D_i\}$)} & \Box \notag 
+\end{align}
+
+\subsubsection*{Aufgabe 3 \small(a)}
+\begin{flushleft}
+    Es ist nicht \textbf{surjektiv}, weil es zum Beispiel kein definiertes x gibt, für welches die Wertmenge 3 rauskommt
+\end{flushleft}
+\begin{flushleft}
+    Es ist \textbf{injektiv}, weil es gilt, dass $n_1 < n_2$ dann ist $f(n_1) < f(n_2)$
+\end{flushleft} 
+\begin{flushleft}
+    Es ist nicht \textbf{bijektiv}, weil es nicht \textbf{surjektiv} ist.
+\end{flushleft}
+
+\subsubsection*{Aufgabe 3 \small(b)}
+\begin{flushleft}
+    Es ist \textbf{surjektiv}, weil es gilt das jedes $\mathbb{N}$ vorkommt.
+\end{flushleft}
+\begin{flushleft}
+    Es ist nicht \textbf{injektiv}, weil zum Beispiel gilt f(1) = 1 und f(-1) = 1 
+\end{flushleft} 
+\begin{flushleft}
+    Es ist nicht \textbf{bijektiv}, weil es nicht \textbf{injektiv} ist.
+\end{flushleft}
+
+\subsubsection*{Aufgabe 3 \small(c)}
+\begin{flushleft}
+    Es ist nicht \textbf{surjektiv}, weil zum Beispiel f(x) = 2 nie vorkommt. 
+\end{flushleft}
+\begin{flushleft}
+    Es ist nicht \textbf{injektiv}, weil zum Beispiel $f(\frac{\pi}{2}) = 0 \wedge f(\frac{3\pi}{2}) = 0$ gilt
+\end{flushleft} 
+\begin{flushleft}
+    Es ist nicht \textbf{bijektiv}, weil es nicht \textbf{injektiv} und nicht \textbf{surjektiv} ist.
+\end{flushleft}
+
+\subsubsection*{Aufgabe 3 \small(d)}
+\begin{flushleft}
+    Es ist \textbf{surjektiv}, weil es alle Zahlen von -1 bis 1 es gibt.
+\end{flushleft}
+\begin{flushleft}
+    Es ist nicht \textbf{injektiv}, weil zum Beispiel $f(\frac{\pi}{2}) = 0 \wedge f(\frac{3\pi}{2}) = 0$ gilt
+\end{flushleft} 
+\begin{flushleft}
+    Es ist nicht \textbf{bijektiv}, weil es nicht \textbf{injektiv} ist.
+\end{flushleft}
+
+\subsubsection*{Aufgabe 3 \small(e)}
+\begin{flushleft}
+    Es ist \textbf{surjektiv}, weil mit der einen Funktion alle ungeraden Zahlen dargestellt werden und mit der anderen Funktion alle geraden Zahlen dargestellt werden können
+\end{flushleft}
+\begin{flushleft}
+    Es ist nicht \textbf{injektiv}, weil mit den negativen Zahlen nur ungerade Zahlen dargestellt werden können und mit den positiven Zahlen nur gerade Zahlen dargestellt werden können.
+\end{flushleft} 
+\begin{flushleft}
+    Es ist \textbf{bijektiv}, weil es \textbf{injektiv} und \textbf{surjektiv} ist.
+\end{flushleft}
+
+\subsubsection*{Aufgabe 4 \small(a)}
+\begin{align}
+    R_1 = \{(a, b) \in \mathbb{N} \times \mathbb{N} |\: a \:\text teilt \: b\} \notag 
+\end{align}
+\textbf{reflexiv}, denn es gilt $\forall x \in \mathbb{N} \Rightarrow $ a teilt  a. \\
+nicht \textbf{symmetrisch}, denn zum Beispiel $(2, 4) \in R_1$ aber $(4, 2) \notin R_1$ \\
+\textbf{transitiv}, denn $(a, b) \in R_1 \Rightarrow b = a \cdot p$ und $(b, c) \in R_1 \Rightarrow c = b \cdot q$ damit gilt $c = a \cdot q \cdot p$ und somit ist $(a, c) \in R_1$
+
+\subsubsection*{Aufgabe 4 \small(b)}
+\begin{align}
+    R_2 = \{(a, b) \in \mathbb{N} \times \mathbb{N} |\:\text ab \: ist \: eine \: Quadratzahl \:\} \notag 
+\end{align}
+\textbf{reflexiv}, denn es gilt $\forall x \in \mathbb{N} \Rightarrow aa = a^2$ eine Quadratzahl also $(a, a) \in R_2$  \\
+\textbf{symmetrisch}, denn ist $(a, b) \in R_2$ , also $ab$ eine Quadratzahl so ist auch $ba$ eine Quadratzahl, also $(b, a) \in R_2$ \\
+nicht \textbf{transitiv}, denn zum Beispiel liegen $(1, 0) \wedge (0, 2)$, da $1 \cdot 0 = 0^2$ und $0 \cdot 2 = 0^2$ Quadratzahlen sind, aber $1 \cdot 2 = 2$ sind keine Quadratzahl und so $(0, 2) \notin R_2$. Dies ist darauf bezogen, wenn $0 \in \mathbb{N}$, ansonsten handelt es sich um eine Transitivität.
+
+\subsubsection*{Aufgabe 4 \small(c)}
+\begin{align}
+    R_3 = \{((a, b), (c, d)) \in \mathbb{N}^2 \times \mathbb{N}^2 |\: (a < c) \vee (c = a \wedge b < d) \} \notag 
+\end{align}
+nicht \textbf{reflexiv}, denn es gilt $(1, 1) \in R_3$, aber $((1, 1), (1, 1)) \in R_3$, da $1 \nless 1$ \\
+nicht \textbf{symmetrisch}, denn zum Beispiel $((1, 1), (2, 2)) \in R_3$ aber $((2, 2), (1, 1)) \notin R_3$, da $2 \nless 1$  \\
+\textbf{transitiv}, wenn man sich alle möglichen Fälle überlegt für $(a, b) \:\tilde{} \: (c, d) \wedge (a, b) \: \tilde{} \: (e, f) \Rightarrow (a, b) \: \tilde{} \: (e, f)$ kann man folgendermaßen nachweisen: \\
+\begin{align}
+    a < c \wedge c < e &\Rightarrow a < e \notag \\
+    (a = c \wedge c = e &\Rightarrow a = e) \wedge (b < d \wedge d < f \Rightarrow b < f) \notag \\
+    a < c \wedge c = e &\Rightarrow a < e \notag \\
+    a = c \wedge c < e &\Rightarrow a < e \notag & \Box 
+\end{align}
+\end{document}
